@@ -9,28 +9,28 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/matrix_access.hpp"
 
-TEST(VecTwo, ÑonstructorOne) {
+TEST(VecTwo, Ã‘onstructorOne) {
 	glm::vec2 vectorOne = glm::vec2();
 	Vec2 vectorTwo;
 	EXPECT_EQ(vectorOne.x, vectorTwo.x);
 	EXPECT_EQ(vectorOne.y, vectorTwo.y);
 }
 
-TEST(VecTwo, ÑonstructorTwo) {
+TEST(VecTwo, Ã‘onstructorTwo) {
 	glm::vec2 vectorOne = glm::vec2(4.0f);
 	Vec2 vectorTwo(4.0f);
 	EXPECT_EQ(vectorOne.x, vectorTwo.x);
 	EXPECT_EQ(vectorOne.y, vectorTwo.y);
 }
 
-TEST(VecTwo, ÑonstructorThree) {
+TEST(VecTwo, Ã‘onstructorThree) {
 	glm::vec2 vectorOne = glm::vec2(4.0f, 5.4f);
 	Vec2 vectorTwo(4.0f, 5.4f);
 	EXPECT_EQ(vectorOne.x, vectorTwo.x);
 	EXPECT_EQ(vectorOne.y, vectorTwo.y);
 }
 
-TEST(VecTwo, ÑonstructorFour) {
+TEST(VecTwo, Ã‘onstructorFour) {
 	glm::vec2 vectorOne = glm::vec2(-7, 3);
 	Vec2 support(-7, 3);
 	Vec2 vectorTwo(support);
@@ -439,7 +439,7 @@ TEST(VecFour, Equal) {
 	EXPECT_TRUE(vecOne != vecTwo);
 }
 
-TEST(MatTwo, ÑonstructorOne) {
+TEST(MatTwo, Ã‘onstructorOne) {
 	glm::mat2 matrixOne = glm::mat2();
 	Mat2 matOne;
 
@@ -449,7 +449,7 @@ TEST(MatTwo, ÑonstructorOne) {
 	EXPECT_EQ(matrixOne[1][1], matOne.data[1][1]);
 }
 
-TEST(MatTwo, ÑonstructorTwo) {
+TEST(MatTwo, Ã‘onstructorTwo) {
 	glm::mat2 matrixOne = glm::mat2(1.0f);
 	Mat2 matOne(1.0f);
 
@@ -459,7 +459,7 @@ TEST(MatTwo, ÑonstructorTwo) {
 	EXPECT_EQ(matrixOne[1][1], matOne.data[1][1]);
 }
 
-TEST(MatTwo, ÑonstructorThree) {
+TEST(MatTwo, Ã‘onstructorThree) {
 	glm::mat2 matrixOne = glm::mat2(-3);
 	Mat2 matOne(-3);
 
@@ -469,7 +469,7 @@ TEST(MatTwo, ÑonstructorThree) {
 	EXPECT_EQ(matrixOne[1][1], matOne.data[1][1]);
 }
 
-TEST(MatTwo, ÑonstructorFour) {
+TEST(MatTwo, Ã‘onstructorFour) {
 	glm::mat2 matrixOne = glm::mat2(2, 12, -43, 1);
 	Mat2 matOne(2, 12, -43, 1);
 
@@ -479,7 +479,7 @@ TEST(MatTwo, ÑonstructorFour) {
 	EXPECT_EQ(matrixOne[1][1], matOne.data[1][1]);
 }
 
-TEST(MatTwo, ÑonstructorFive) {
+TEST(MatTwo, Ã‘onstructorFive) {
 	glm::vec2 vectorOne = glm::vec2(1, 3);
 	glm::vec2 vectorTwo = glm::vec2(2, 6);
 	glm::mat2 matrixOne = glm::mat2(vectorOne, vectorTwo);
@@ -494,7 +494,7 @@ TEST(MatTwo, ÑonstructorFive) {
 	EXPECT_EQ(matrixOne[1][1], matOne.data[1][1]);
 }
 
-TEST(MatTwo, ÑonstructorSix) {
+TEST(MatTwo, Ã‘onstructorSix) {
 	glm::mat2 supportOne = glm::mat2(1, 2, 1, -1);
 	glm::mat2 matrixOne = glm::mat2(supportOne);
 
@@ -1621,14 +1621,6 @@ TEST(MatFour, LookAt) {
 
 TEST(MatFour, Ortho) {
 	glm::mat4 matrixOne = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-
-	//std::cout << std::endl;
-	//for (int i = 0; i < 4; i++) {
-	//	for (int j = 0; j < 4; j++) {
-	//	std::cout << matrixOne[i][j] << " ";
-	//	}
-	//	std::cout << std::endl;
-	//}
 
 	Mat4 matOne;
 	matOne = matOne.Ortho(0.0f, 800.0f, 0.0f, 600.0f);
