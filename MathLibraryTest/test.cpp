@@ -719,8 +719,6 @@ TEST(MatTwo, Row) {
 	Vec2 vecRow(matOne.GetRow(0));
 	Vec2 vecRowTwo(matOne.GetRow(1));
 
-	//Vec2 vec(matOne.GetRow(-1));
-
 	EXPECT_EQ(vectorRow.x, vecRow.x);
 	EXPECT_EQ(vectorRow.y, vecRow.y);
 	EXPECT_EQ(vectorRowTwo.x, vecRowTwo.x);
