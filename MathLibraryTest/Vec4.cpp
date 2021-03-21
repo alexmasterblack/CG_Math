@@ -48,25 +48,23 @@ Vec4& Vec4::operator*=(float number)
 	y = y * number;
 	z = z * number;
 	w = w * number;
+
 	return *this;
 }
 
 Vec4 Vec4::operator/(float number) const
 {
-	if (number != 0) {
-		return Vec4(x / number, y / number, z / number, w / number);
-	}
+	return Vec4(x / number, y / number, z / number, w / number);
 }
 
 Vec4& Vec4::operator/=(float number)
 {
-	if (number != 0) {
-		x = x / number;
-		y = y / number;
-		z = z / number;
-		w = w / number;
-		return *this;
-	}
+	x = x / number;
+	y = y / number;
+	z = z / number;
+	w = w / number;
+
+	return *this;
 }
 
 Vec4 Vec4::Normalize()

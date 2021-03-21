@@ -47,24 +47,22 @@ Vec3& Vec3::operator*=(float number)
 	x = x * number;
 	y = y * number;
 	z = z * number;
+
 	return *this;
 }
 
 Vec3 Vec3::operator/(float number) const
 {
-	if (number != 0) {
-		return Vec3(x / number, y / number, z / number);
-	}
+	return Vec3(x / number, y / number, z / number);
 }
 
 Vec3& Vec3::operator/=(float number)
 {
-	if (number != 0) {
-		x = x / number;
-		y = y / number;
-		z = z / number;
-		return *this;
-	}
+	x = x / number;
+	y = y / number;
+	z = z / number;
+
+	return *this;
 }
 
 Vec3 Vec3::Normalize()

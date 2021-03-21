@@ -117,25 +117,21 @@ Mat2& Mat2::operator*=(float number)
 
 Mat2 Mat2::operator/(float number) const
 {
-	if (number != 0) {
-		Mat2 result;
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 2; j++)
-				result.data[i][j] = data[i][j] / number;
-		}
-		return result;
+	Mat2 result;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++)
+			result.data[i][j] = data[i][j] / number;
 	}
+	return result;
 }
 
 Mat2& Mat2::operator/=(float number)
 {
-	if (number != 0) {
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 2; j++)
-				data[i][j] /= number;
-		}
-		return *this;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++)
+			data[i][j] /= number;
 	}
+	return *this;
 }
 
 Mat2 Mat2::operator+(float number) const

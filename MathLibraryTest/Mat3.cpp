@@ -139,25 +139,21 @@ Mat3& Mat3::operator*=(float number)
 
 Mat3 Mat3::operator/(float number) const
 {
-	if (number != 0) {
-		Mat3 result;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++)
-				result.data[i][j] = data[i][j] / number;
-		}
-		return result;
+	Mat3 result;
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++)
+			result.data[i][j] = data[i][j] / number;
 	}
+	return result;
 }
 
 Mat3& Mat3::operator/=(float number)
 {
-	if (number != 0) {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++)
-				data[i][j] /= number;
-		}
-		return *this;
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++)
+			data[i][j] /= number;
 	}
+	return *this;
 }
 
 Mat3 Mat3::operator+(float number) const

@@ -44,23 +44,21 @@ Vec2& Vec2::operator*=(float number)
 {
 	x = x * number;
 	y = y * number;
+
 	return *this;
 }
 
 Vec2 Vec2::operator/(float number) const
 {
-	if (number != 0) {
-		return Vec2(x / number, y / number);
-	}
+	return Vec2(x / number, y / number);
 }
 
 Vec2& Vec2::operator/=(float number)
 {
-	if (number != 0) {
-		x = x / number;
-		y = y / number;
-		return *this;
-	}
+	x = x / number;
+	y = y / number;
+
+	return *this;
 }
 
 Vec2 Vec2::Normalize()

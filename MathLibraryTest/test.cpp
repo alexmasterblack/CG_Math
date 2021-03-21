@@ -719,8 +719,6 @@ TEST(MatTwo, Row) {
 	Vec2 vecRow(matOne.GetRow(0));
 	Vec2 vecRowTwo(matOne.GetRow(1));
 
-	//Vec2 vec(matOne.GetRow(-1));
-
 	EXPECT_EQ(vectorRow.x, vecRow.x);
 	EXPECT_EQ(vectorRow.y, vecRow.y);
 	EXPECT_EQ(vectorRowTwo.x, vecRowTwo.x);
@@ -1621,14 +1619,6 @@ TEST(MatFour, LookAt) {
 
 TEST(MatFour, Ortho) {
 	glm::mat4 matrixOne = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-
-	//std::cout << std::endl;
-	//for (int i = 0; i < 4; i++) {
-	//	for (int j = 0; j < 4; j++) {
-	//	std::cout << matrixOne[i][j] << " ";
-	//	}
-	//	std::cout << std::endl;
-	//}
 
 	Mat4 matOne;
 	matOne = matOne.Ortho(0.0f, 800.0f, 0.0f, 600.0f);

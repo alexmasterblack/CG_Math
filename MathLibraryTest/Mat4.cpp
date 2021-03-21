@@ -161,25 +161,21 @@ Mat4& Mat4::operator*=(float number)
 
 Mat4 Mat4::operator/(float number) const
 {
-	if (number != 0) {
-		Mat4 result;
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++)
-				result.data[i][j] = data[i][j] / number;
-		}
-		return result;
+	Mat4 result;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++)
+			result.data[i][j] = data[i][j] / number;
 	}
+	return result;
 }
 
 Mat4& Mat4::operator/=(float number)
 {
-	if (number != 0) {
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 4; j++)
-				data[i][j] /= number;
-		}
-		return *this;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++)
+			data[i][j] /= number;
 	}
+	return *this;
 }
 
 Mat4 Mat4::operator+(float number) const
