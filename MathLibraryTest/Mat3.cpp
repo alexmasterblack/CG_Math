@@ -1,19 +1,8 @@
 #include "pch.h"
 #include "Mat3.h"
 
-Mat3::Mat3()
-{
-	for (int i = 0; i < 3; i++) {
-		data.push_back(std::vector<float>(3));
-	}
-}
-
 Mat3::Mat3(float number)
 {
-	data.resize(3);
-	for (int i = 0; i < 3; i++) {
-		data[i].resize(3);
-	}
 	data[0][0] = number;
 	data[0][1] = 0;
 	data[0][2] = 0;
@@ -30,10 +19,6 @@ Mat3::Mat3(
 	float w, float a, float b,
 	float c, float d, float e)
 {
-	data.resize(3);
-	for (int i = 0; i < 3; i++) {
-		data[i].resize(3);
-	}
 	data[0][0] = x;
 	data[0][1] = y;
 	data[0][2] = z;
@@ -47,10 +32,6 @@ Mat3::Mat3(
 
 Mat3::Mat3(const Vec3& first, const Vec3& second, const Vec3& third)
 {
-	data.resize(3);
-	for (int i = 0; i < 3; i++) {
-		data[i].resize(3);
-	}
 	data[0][0] = first.x;
 	data[0][1] = first.y;
 	data[0][2] = first.z;

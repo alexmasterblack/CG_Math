@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>Mat3.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "pch.h"
+#include "Mat3.h"
+
+Mat3::Mat3()
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 3; i++) {
+		data.push_back(std::vector&lt;float&gt;(3));
+	}
+}</span>
+
+Mat3::Mat3(float number)
+<span style = "background-color:#dfd">{
+	data.resize(3);
+	for (int i = 0; i &lt; 3; i++) {
+		data[i].resize(3);
+	}
+	data[0][0] = number;
+	data[0][1] = 0;
+	data[0][2] = 0;
+	data[1][0] = 0;
+	data[1][1] = number;
+	data[1][2] = 0;
+	data[2][0] = 0;
+	data[2][1] = 0;
+	data[2][2] = number;
+}</span>
+
+Mat3::Mat3(
+	float x, float y, float z,
+	float w, float a, float b,
+	float c, float d, float e)
+<span style = "background-color:#dfd">{
+	data.resize(3);
+	for (int i = 0; i &lt; 3; i++) {
+		data[i].resize(3);
+	}
+	data[0][0] = x;
+	data[0][1] = y;
+	data[0][2] = z;
+	data[1][0] = w;
+	data[1][1] = a;
+	data[1][2] = b;
+	data[2][0] = c;
+	data[2][1] = d;
+	data[2][2] = e;
+}</span>
+
+Mat3::Mat3(const Vec3&amp; first, const Vec3&amp; second, const Vec3&amp; third)
+<span style = "background-color:#dfd">{
+	data.resize(3);
+	for (int i = 0; i &lt; 3; i++) {
+		data[i].resize(3);
+	}
+	data[0][0] = first.x;
+	data[0][1] = first.y;
+	data[0][2] = first.z;
+	data[1][0] = second.x;
+	data[1][1] = second.y;
+	data[1][2] = second.z;
+	data[2][0] = third.x;
+	data[2][1] = third.y;
+	data[2][2] = third.z;
+}</span>
+
+Mat3::Mat3(const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	data = other.data;
+}</span>
+
+Mat3 Mat3::operator+(const Mat3&amp; other) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] + other.data[i][j];
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator+=(const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this + other;
+	return *this;
+}</span>
+
+Mat3 Mat3::operator-(const Mat3&amp; other) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] - other.data[i][j];
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator-=(const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this - other;
+	return *this;
+}</span>
+
+Mat3 Mat3::operator*(const Mat3&amp; other) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++) {
+			for (int k = 0; k &lt; 3; k++) {
+				result.data[i][j] += other.data[i][k] * data[k][j];
+			}
+		}
+	}
+	return result.GetTransposed();
+}</span>
+
+Mat3&amp; Mat3::operator*=(const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this * other;
+	return *this;
+}</span>
+
+Mat3 Mat3::operator*(float number) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] * number;
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator*=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			data[i][j] *= number;
+	}
+	return *this;
+}</span>
+
+Mat3 Mat3::operator/(float number) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] / number;
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator/=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			data[i][j] /= number;
+	}
+	return *this;
+}</span>
+
+Mat3 Mat3::operator+(float number) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] + number;
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator+=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			data[i][j] += number;
+	}
+	return *this;
+}</span>
+
+Mat3 Mat3::operator-(float number) const
+<span style = "background-color:#dfd">{
+	Mat3 result;
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			result.data[i][j] = data[i][j] - number;
+	}
+	return result;
+}</span>
+
+Mat3&amp; Mat3::operator-=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 3; i++) {
+		for (int j = 0; j &lt; 3; j++)
+			data[i][j] -= number;
+	}
+	return *this;
+}</span>
+
+Vec3 Mat3::operator*(const Vec3&amp; other) const
+<span style = "background-color:#dfd">{
+	Vec3 result;
+	result.x = data[0][0] * other.x + data[1][0] * other.y + data[2][0] * other.z;
+	result.y = data[0][1] * other.x + data[1][1] * other.y + data[2][1] * other.z;
+	result.z = data[0][2] * other.x + data[1][2] * other.y + data[2][2] * other.z;
+	return result;
+}</span>
+
+Mat3 Mat3::GetIdentity()
+<span style = "background-color:#dfd">{
+	return Mat3(1.0f);
+}</span>
+
+Mat3 Mat3::GetTransposed()
+<span style = "background-color:#dfd">{
+	return Mat3(GetColumn(0), GetColumn(1), GetColumn(2));
+}</span>
+
+Mat3 Mat3::GetInverse()
+<span style = "background-color:#dfd">{
+	float det = </span>
+		data[0][0] * (data[1][1] * data[2][2] - data[2][1] * data[1][2])
+		- data[1][0] * (data[0][1] * data[2][2] - data[2][1] * data[0][2])
+		+ data[2][0] * (data[0][1] * data[1][2] - data[1][1] * data[0][2]);
+
+<span style = "background-color:#dfd">	Mat3 result;
+	result.data[0][0] = (data[1][1] * data[2][2] - data[2][1] * data[1][2]) * (1 / det);
+	result.data[1][0] = -(data[1][0] * data[2][2] - data[2][0] * data[1][2]) * (1 / det);
+	result.data[2][0] = (data[1][0] * data[2][1] - data[2][0] * data[1][1]) * (1 / det);
+	result.data[0][1] = -(data[0][1] * data[2][2] - data[2][1] * data[0][2]) * (1 / det);
+	result.data[1][1] = (data[0][0] * data[2][2] - data[2][0] * data[0][2]) * (1 / det);
+	result.data[2][1] = -(data[0][0] * data[2][1] - data[2][0] * data[0][1]) * (1 / det);
+	result.data[0][2] = (data[0][1] * data[1][2] - data[1][1] * data[0][2]) * (1 / det);
+	result.data[1][2] = -(data[0][0] * data[1][2] - data[1][0] * data[0][2]) * (1 / det);
+	result.data[2][2] = (data[0][0] * data[1][1] - data[1][0] * data[0][1]) * (1 / det);</span>
+
+<span style = "background-color:#dfd">	return result;
+}</span>
+
+Vec3 Mat3::GetColumn(int index)
+<span style = "background-color:#dfd">{
+	assert(index &gt;= 0 &amp;&amp; index &lt; 3);
+	return Vec3(data[index][0], data[index][1], data[index][2]);
+}</span>
+
+Vec3 Mat3::GetRow(int index)
+<span style = "background-color:#dfd">{
+	assert(index &gt;= 0 &amp;&amp; index &lt; 3);
+	std::vector&lt;float&gt; result(3);
+	for (int i = 0; i &lt; 3; i++) {
+		result[i] = data[i][index];
+	}
+	return Vec3(result[0], result[1], result[2]);
+}</span>
+
+const bool operator==(const Mat3&amp; our, const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	return our.data == other.data;
+}</span>
+
+const bool operator!=(const Mat3&amp; our, const Mat3&amp; other)
+<span style = "background-color:#dfd">{
+	return !(our == other);
+}</span></pre>
+	</body>
+</html>

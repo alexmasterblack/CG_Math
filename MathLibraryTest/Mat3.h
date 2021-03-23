@@ -1,10 +1,10 @@
 #pragma once
-#include <vector>
+#include <array>
 #include <assert.h>
 
 class Mat3 {
 public:
-	Mat3();
+	Mat3() = default;
 	Mat3(float);
 	Mat3(float, float, float, float, float, float, float, float, float);
 	Mat3(const Vec3&, const Vec3&, const Vec3&);
@@ -32,6 +32,5 @@ public:
 	friend const bool operator==(const Mat3&, const Mat3&);
 	friend const bool operator!=(const Mat3&, const Mat3&);
 
-	std::vector<std::vector<float>> data;
+	std::array<std::array<float, 3>, 3> data{ 0 };
 };
-

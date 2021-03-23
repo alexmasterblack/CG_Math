@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>Mat2.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+	<body onload="prettyPrint()">
+        <h4></h4>
+		<pre class="prettyprint lang-cpp linenums">
+#include "pch.h"
+#include "Mat2.h"
+
+Mat2::Mat2()
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 2; i++) {
+		data.push_back(std::vector&lt;float&gt;(2));
+	}
+}</span>
+
+Mat2::Mat2(float number)
+<span style = "background-color:#dfd">{
+	data.resize(2);
+	for (int i = 0; i &lt; 2; i++) {
+		data[i].resize(2);
+	}
+	data[0][0] = number;
+	data[0][1] = 0;
+	data[1][0] = 0;
+	data[1][1] = number;
+}</span>
+
+Mat2::Mat2(float x, float y, float z, float w)
+<span style = "background-color:#dfd">{
+	data.resize(2);
+	for (int i = 0; i &lt; 2; i++) {
+		data[i].resize(2);
+	}
+	data[0][0] = x;
+	data[0][1] = y;
+	data[1][0] = z;
+	data[1][1] = w;
+}</span>
+
+Mat2::Mat2(const Vec2&amp; first, const Vec2&amp; second)
+<span style = "background-color:#dfd">{
+	data.resize(2);
+	for (int i = 0; i &lt; 2; i++) {
+		data[i].resize(2);
+	}
+	data[0][0] = first.x;
+	data[0][1] = first.y;
+	data[1][0] = second.x;
+	data[1][1] = second.y;
+}</span>
+
+Mat2::Mat2(const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	data = other.data;
+}</span>
+
+Mat2 Mat2::operator+(const Mat2&amp; other) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] + other.data[i][j];
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator+=(const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this + other;
+	return *this;
+}</span>
+
+Mat2 Mat2::operator-(const Mat2&amp; other) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] - other.data[i][j];
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator-=(const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this - other;
+	return *this;
+}</span>
+
+Mat2 Mat2::operator*(const Mat2&amp; other) const
+<span style = "background-color:#dfd">{
+	return Mat2(</span>
+		data[0][0] * other.data[0][0] + data[1][0] * other.data[0][1],
+		data[0][1] * other.data[0][0] + data[1][1] * other.data[0][1],
+		data[0][0] * other.data[1][0] + data[1][0] * other.data[1][1],
+		data[0][1] * other.data[1][0] + data[1][1] * other.data[1][1]);
+<span style = "background-color:#dfd">}</span>
+
+Mat2&amp; Mat2::operator*=(const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	*this = *this * other;
+	return *this;
+}</span>
+
+Mat2 Mat2::operator*(float number) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] * number;
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator*=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			data[i][j] *= number;
+	}
+	return *this;
+}</span>
+
+Mat2 Mat2::operator/(float number) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] / number;
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator/=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			data[i][j] /= number;
+	}
+	return *this;
+}</span>
+
+Mat2 Mat2::operator+(float number) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] + number;
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator+=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			data[i][j] += number;
+	}
+	return *this;
+}</span>
+
+Mat2 Mat2::operator-(float number) const
+<span style = "background-color:#dfd">{
+	Mat2 result;
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			result.data[i][j] = data[i][j] - number;
+	}
+	return result;
+}</span>
+
+Mat2&amp; Mat2::operator-=(float number)
+<span style = "background-color:#dfd">{
+	for (int i = 0; i &lt; 2; i++) {
+		for (int j = 0; j &lt; 2; j++)
+			data[i][j] -= number;
+	}
+	return *this;
+}</span>
+
+Vec2 Mat2::operator*(const Vec2&amp; other) const
+<span style = "background-color:#dfd">{
+	Vec2 result;
+	result.x = data[0][0] * other.x + data[1][0] * other.y;
+	result.y = data[0][1] * other.x + data[1][1] * other.y;
+	return result;
+}</span>
+
+Mat2 Mat2::GetIdentity()
+<span style = "background-color:#dfd">{
+	return Mat2(1.0f);
+}</span>
+
+Mat2 Mat2::GetTransposed()
+<span style = "background-color:#dfd">{
+	return Mat2(GetColumn(0), GetColumn(1));
+}</span>
+
+Mat2 Mat2::GetInverse()
+<span style = "background-color:#dfd">{
+	float det = data[0][0] * data[1][1] - data[1][0] * data[0][1];
+	Mat2 result;
+	result.data[0][0] = data[1][1] * (1 / det);
+	result.data[0][1] = -data[0][1] * (1 / det);
+	result.data[1][0] = -data[1][0] * (1 / det);
+	result.data[1][1] = data[0][0] * (1 / det);
+	return result;
+}</span>
+
+Vec2 Mat2::GetColumn(int index)
+<span style = "background-color:#dfd">{
+	assert(index &gt;= 0 &amp;&amp; index &lt; 2);
+	return Vec2(data[index][0], data[index][1]);
+}</span>
+
+Vec2 Mat2::GetRow(int index)
+<span style = "background-color:#dfd">{
+	assert(index &gt;= 0 &amp;&amp; index &lt; 2);
+	std::vector&lt;float&gt; result(2);
+	for (int i = 0; i &lt; 2; i++) {
+		result[i] = data[i][index];
+	}
+	return Vec2(result[0], result[1]);
+}</span>
+
+const bool operator==(const Mat2&amp; our, const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	return our.data == other.data;
+}</span>
+
+const bool operator!=(const Mat2&amp; our, const Mat2&amp; other)
+<span style = "background-color:#dfd">{
+	return !(our == other);
+}</span></pre>
+	</body>
+</html>

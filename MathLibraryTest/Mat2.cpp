@@ -1,19 +1,8 @@
 #include "pch.h"
 #include "Mat2.h"
 
-Mat2::Mat2()
-{
-	for (int i = 0; i < 2; i++) {
-		data.push_back(std::vector<float>(2));
-	}
-}
-
 Mat2::Mat2(float number)
 {
-	data.resize(2);
-	for (int i = 0; i < 2; i++) {
-		data[i].resize(2);
-	}
 	data[0][0] = number;
 	data[0][1] = 0;
 	data[1][0] = 0;
@@ -22,10 +11,6 @@ Mat2::Mat2(float number)
 
 Mat2::Mat2(float x, float y, float z, float w)
 {
-	data.resize(2);
-	for (int i = 0; i < 2; i++) {
-		data[i].resize(2);
-	}
 	data[0][0] = x;
 	data[0][1] = y;
 	data[1][0] = z;
@@ -34,10 +19,6 @@ Mat2::Mat2(float x, float y, float z, float w)
 
 Mat2::Mat2(const Vec2& first, const Vec2& second)
 {
-	data.resize(2);
-	for (int i = 0; i < 2; i++) {
-		data[i].resize(2);
-	}
 	data[0][0] = first.x;
 	data[0][1] = first.y;
 	data[1][0] = second.x;

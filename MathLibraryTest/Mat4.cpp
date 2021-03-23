@@ -1,19 +1,8 @@
 #include "pch.h"
 #include "Mat4.h"
 
-Mat4::Mat4()
-{
-	for (int i = 0; i < 4; i++) {
-		data.push_back(std::vector<float>(4));
-	}
-}
-
 Mat4::Mat4(float number)
 {
-	data.resize(4);
-	for (int i = 0; i < 4; i++) {
-		data[i].resize(4);
-	}
 	data[0][0] = number;
 	data[0][1] = 0;
 	data[0][2] = 0;
@@ -38,10 +27,6 @@ Mat4::Mat4(
 	float e, float f, float g, float h,
 	float i, float k, float l, float m)
 {
-	data.resize(4);
-	for (int i = 0; i < 4; i++) {
-		data[i].resize(4);
-	}
 	data[0][0] = x;
 	data[0][1] = y;
 	data[0][2] = z;
@@ -62,10 +47,6 @@ Mat4::Mat4(
 
 Mat4::Mat4(const Vec4& first, const Vec4& second, const Vec4& third, const Vec4& fifth)
 {
-	data.resize(4);
-	for (int i = 0; i < 4; i++) {
-		data[i].resize(4);
-	}
 	data[0][0] = first.x;
 	data[0][1] = first.y;
 	data[0][2] = first.z;
