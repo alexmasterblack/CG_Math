@@ -226,7 +226,7 @@ Vec4 Mat4::GetColumn(int index)
 Vec4 Mat4::GetRow(int index)
 {
 	assert(index >= 0 && index < 4);
-	std::vector<float> result(4);
+	std::array<float, 4> result;
 	for (int i = 0; i < 4; i++) {
 		result[i] = data[i][index];
 	}
